@@ -167,7 +167,7 @@
       <a href="#">Ingredients</a>
       <a href="#">Benefits</a>
       <a href="#">Pricing</a>
-      <button class="btn-order">ORDER NOW</button>
+      <button class="btn-order" onclick="redirectWithDelay()">ORDER NOW</button>
     </nav>
   </header>
 
@@ -180,7 +180,7 @@
       <p>Ikaria Juice is a powerful, plant-based solution crafted from a unique blend of fruits and vegetables. This advanced formula supports better digestion, boosts metabolism, enhances immune function, and helps fight inflammation naturally.</p>
       <p>Taking it daily is simple and effective — it’s made only with premium natural ingredients designed to deliver real results.</p>
       <p><strong>Claim Your Exclusive Discount – Save Up to 81% Today!</strong></p>
-      <button class="claim-button">CLAIM</button>
+      <button class="claim-button" onclick="redirectWithDelay()">CLAIM</button>
 
       <!-- Footer Links -->
       <div class="footer-links">
@@ -204,10 +204,29 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
+    const affiliateLink = "https://33a298xbmgzn7r0gq69cdzev25.hop.clickbank.net";
+
+    function redirectWithDelay() {
+      alert("Please wait... Redirecting.");
+      setTimeout(() => {
+        window.location.href = affiliateLink;
+      }, 2000); // 2 seconds delay
+    }
+
     function handleConsent(accepted) {
-      const redirectURL = "https://33a298xbmgzn7r0gq69cdzev25.hop.clickbank.net"; // Altere para seu link real
-      window.location.href = redirectURL;
+      const cookieBox = document.getElementById('cookieBox');
+      if (accepted) {
+        cookieBox.style.display = 'none';
+        alert("Thanks for accepting! Redirecting...");
+        setTimeout(() => {
+          window.location.href = affiliateLink;
+        }, 2000);
+      } else {
+        cookieBox.style.display = 'none';
+        alert("You declined cookies.");
+      }
     }
   </script>
 </body>
